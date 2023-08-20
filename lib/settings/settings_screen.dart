@@ -1,26 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:todo/constants/colors.dart';
-import 'package:todo/core/style/my_theme.dart';
 
-class SettingsScreen extends StatelessWidget {
+import 'drop_down_language.dart';
+import 'drop_down_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
   @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text("settings"),
+        title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0),
         child: Column(
           children: [
-            Text("language",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
-            Text("mode",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(AppLocalizations.of(context)!.language,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  DropDownLang(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(AppLocalizations.of(context)!.mode,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  DropDownTheme(),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
 }
