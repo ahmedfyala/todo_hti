@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:todo/settings/settings_screen.dart';
 import 'package:todo/tasks/add_task_bottomsheet.dart';
 import 'package:todo/tasks/tasks_screen.dart';
-
 import 'constants/colors.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routeName = "home";
+
+  const HomeLayout({super.key});
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
@@ -16,8 +16,8 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   int selectedIndex = 0;
   List<Widget> screenWidgets = [
-    TasksListTab(),
-    SettingsScreen(),
+    const TasksListTab(),
+    const SettingsScreen(),
   ];
 
   @override
@@ -32,23 +32,23 @@ class _HomeLayoutState extends State<HomeLayout> {
             ShowAddTaskBottomSheet();
           },
           child: Container(
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               height: 50,
               width: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: tdBlue,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 color: tdBGColor,
                 size: 30,
               )),
         ),
-        bottomNavigationBar: Container(
+        bottomNavigationBar: SizedBox(
           height: 60,
           child: BottomAppBar(
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {
@@ -56,7 +56,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   selectedIndex = index;
                 });
               },
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage(
@@ -82,7 +82,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   void ShowAddTaskBottomSheet() {
     showModalBottomSheet(
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
         topRight: Radius.circular(18),
         topLeft: Radius.circular(18),
@@ -91,7 +91,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       builder: (context) => Padding(
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: AddTaskBottomSheet(),
+        child: const AddTaskBottomSheet(),
       ),
     );
   }

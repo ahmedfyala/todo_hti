@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/models/task_models.dart';
@@ -34,7 +33,7 @@ class FirebaseFunctions {
     return getTaskCollection().doc(id).delete();
   }
 
-  static Future<void> updateTasks(String id, TaskModel task) {
-    return getTaskCollection().doc(id).update(task.toJson());
+  static Future<void> updateTasks(String id, TaskModel updateTasks) {
+    return getTaskCollection().doc(id).update(updateTasks.toJson());
   }
 }

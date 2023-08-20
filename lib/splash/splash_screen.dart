@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(HomeLayout.routeName);
     });
     return Scaffold(
-      backgroundColor: tdGreen,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Center(
         child: Image.asset("assets/images/logo.png"),
       ),
